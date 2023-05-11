@@ -1,13 +1,9 @@
 
-
-@extends('layout.template2')
-
+@extends('layout.template')
 @section('title','Lista de editoriales')
-
 @section('content')
-    <h3>Lista de editoriales</h3>
     @if ($editoriales)
-    <table>
+    <table class="table table-bordered">
         <tr>
             <th>Codigo</th>
             <th>Nombre</th>

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
-    <link href="/View/assets/css/alertify.core.css" rel="stylesheet" type="text/css"/>
-    <link href="/View/assets/css/alertify.default.css" rel="stylesheet" type="text/css"/>
-    <script src="/View/assets/js/jquery-1.12.0.min.js" type="text/javascript"></script>
-    <script src="/View/assets/js/bootstrap.min.js"></script>
-    <script src="/View/assets/js/alertify.js" type="text/javascript"></script>
-    <script src="/View/assets/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script src="</View/assets/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+    <link href="{{asset('css/alertify.core.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('css/alertify.default.css')}}" rel="stylesheet" type="text/css"/>
+    <script src="{{asset('js/jquery-1.12.0.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/alertify.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/jquery.dataTables.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/dataTables.bootstrap.min.js')}}" type="text/javascript"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -36,8 +36,8 @@
                    role="button" aria-haspopup="true" 
                    aria-expanded="false">Libros<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/Libros/create">Registrar libro</a></li>
-                  <li><a href="/Libros">Ver lista de libros</a></li>
+                  <li><a href="/libros/create">Registrar libro</a></li>
+                  <li><a href="/libros">Ver lista de libros</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -45,8 +45,8 @@
                    role="button" aria-haspopup="true" 
                    aria-expanded="false">Autores <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Registrar autor</a></li>
-                  <li><a href="#">Ver lista de autores</a></li>
+                    <li><a href="{{route('autores.create')}}">Registrar autor</a></li>
+                  <li><a href="{{route('autores.index')}}">Ver lista de autores</a></li>
                 </ul>
               </li>
               <li class="dropdown">
@@ -63,17 +63,17 @@
                    role="button" aria-haspopup="true" 
                    aria-expanded="false">Editoriales<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/Editoriales/create">Registrar editorial</a></li>
-                  <li><a href="/Editoriales">Ver lista de editoriales</a></li>
+                    <li><a href="/editoriales/create">Registrar editorial</a></li>
+                  <li><a href="/editoriales">Ver lista de editoriales</a></li>
                 </ul>
               </li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">() <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">({{session('user.usuario')}}) <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/Usuarios/logout">Cerrar sesion</a></li>
+                    <li><a href="/logout">Cerrar sesion</a></li>
                   
                 </ul>
               </li>
@@ -92,5 +92,10 @@
                 @yield('content')
             </div>                    
         </div> 
+        @if(session('success'))
+        <script>
+          alertify.success('{{session('success')}}');
+          </script>
+          @endif
 <body>
     </html>

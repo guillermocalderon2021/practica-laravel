@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class AutorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $autores=Autor::get();
@@ -30,10 +28,11 @@ class AutorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'codigo_autor'=>['required'],
+            'codigo_autor'=>['required','max:6'],
             'nombre_autor'=>['required'],
             'nacionalidad'=>['required']
         ]);
+
         $autor=new Autor();
         $autor->codigo_autor=$request->input('codigo_autor');
         $autor->nombre_autor=$request->input('nombre_autor');
@@ -55,8 +54,8 @@ class AutorController extends Controller
      */
     public function edit(Autor $autore)
     {
-        
-        return view('autor.edit',compact('autore'));
+        $autor=$autore;
+        return view('autor.edit',compact('autor'));
     }
 
     /**

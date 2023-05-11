@@ -5,15 +5,16 @@
 @section('content')
 <div class="row">
     <div class=" col-md-7">
-       @if($errors->all())
-        <div class="alert alert-danger">
-            <ul>
-            @foreach($errors->all() as $err)
-                <li>{{$err}}</li>
-            @endforeach
-            </ul>
-        </div>
-       @endif
+        @if ($errors->all())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $err)
+                        <li>{{$err}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         
         <form role="form" action="{{route('autores.store')}}" method="POST">
             @csrf
